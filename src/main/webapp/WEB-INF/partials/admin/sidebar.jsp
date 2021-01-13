@@ -2,19 +2,19 @@
     pageEncoding="UTF-8"%>
 <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-          <a class="nav-link" href="index.html">
+          <a class="nav-link" href="dashboard">
             <i class="fa fa-fw fa-dashboard"></i>
             <span class="nav-link-text">Dashboard</span>
           </a>
         </li>
 		<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Messages">
-          <a class="nav-link" href="messages.html">
+          <a class="nav-link" href="messages">
             <i class="fa fa-fw fa-envelope-open"></i>
             <span class="nav-link-text">Messages</span>
           </a>
         </li>
 		<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Bookings">
-          <a class="nav-link" href="courses.html">
+          <a class="nav-link" href="courses">
             <i class="fa fa-fw fa-archive"></i>
             <span class="nav-link-text">Courses <span class="badge badge-pill badge-primary">6 New</span></span>
           </a>
@@ -26,9 +26,9 @@
           </a>
         </li>
 		<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Bookmarks">
-          <a class="nav-link" href="bookmarks.html">
-            <i class="fa fa-fw fa-heart"></i>
-            <span class="nav-link-text">Bookmarks</span>
+          <a class="nav-link" href="users">
+            <i class="fa fa-fw fa-user"></i>
+            <span class="nav-link-text">Users</span>
           </a>
         </li>
 		<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Add listing">
