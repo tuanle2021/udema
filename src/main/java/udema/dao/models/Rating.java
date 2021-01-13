@@ -9,13 +9,11 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
+public class Rating {
 	private Integer id;
-	private String email;
-	private String password;
-	private String fullName;
-	private String gender;
-	private String avatar;
+	private Integer studentId;
+	private String content;
+	private Integer starValue;
+	private Integer courseId;
 	private Timestamp createdAt;
-	private Integer roleId;
 }
