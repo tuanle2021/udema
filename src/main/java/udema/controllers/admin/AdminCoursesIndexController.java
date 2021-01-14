@@ -8,8 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import udema.dao.repos.UsersDao;
-
 @WebServlet(urlPatterns = "/admin/messages")
 public class AdminCoursesIndexController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
