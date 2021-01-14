@@ -9,4 +9,8 @@
 		<pattern>/admin/*</pattern>
 	</decorator>
 
+	<decorator name="public" page="/WEB-INF/templates/public/template.jsp"> 
+       <pattern>/*</pattern> 
+    </decorator> 
+
 </decorators>
