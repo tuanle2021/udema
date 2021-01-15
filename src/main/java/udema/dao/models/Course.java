@@ -17,10 +17,10 @@ public class Course {
 	private String images;
 	private Double price;
 	private String status;
-	private Integer teacherId;
+	private User teacher;
 	private Timestamp createdAt;
 	private Timestamp updatedAt;
 	private Integer viewCount;
-	private Integer categoryId;
+	private Category category;
 	private Integer discount;
 }

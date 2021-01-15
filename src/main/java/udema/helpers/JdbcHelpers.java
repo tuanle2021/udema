@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class JdbcHelpers {
-	private static String url = "jdbc:mysql://localhost/racing_f1?useUnicode=true&characterEncoding=UTF-8";
+	private static String url = "jdbc:mysql://localhost/udema?useUnicode=true&characterEncoding=UTF-8";
 	private static String user = "root";
 	private static String password = "";
 
