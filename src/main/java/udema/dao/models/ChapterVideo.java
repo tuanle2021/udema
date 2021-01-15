@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 public class ChapterVideo {
 	private Integer id;
 	private Integer chapterId;
+	private Integer courseId;
 	private String videoSrc;
 	private String attachment;
 	private String note;

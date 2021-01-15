@@ -24,7 +24,7 @@ public class CoursesDAO {
 				rs.getString("c.detail"), rs.getString("c.images"), rs.getDouble("c.price"), rs.getString("c.status"),
 				new User(rs.getInt("u.id"), rs.getString("u.email"), rs.getString("u.password"),
 						rs.getString("u.fullname"), rs.getString("u.gender"), rs.getString("u.avatar"),
-						rs.getTimestamp("u.createdAt"), rs.getInt("u.roleId")),
+						rs.getTimestamp("u.createdAt"), rs.getInt("u.roleId"), rs.getBoolean("u.status")),
 				rs.getTimestamp("c.createdAt"), rs.getTimestamp("c.updatedAt"), rs.getInt("c.viewCount"),
 				new Category(rs.getInt("cat.id"), rs.getString("cat.name"), rs.getInt("cat.parentId")),
 				rs.getInt("c.discount"));

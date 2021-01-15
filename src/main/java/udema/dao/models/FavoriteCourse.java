@@ -9,4 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class FavoriteCourse {
 	private Integer id;
+	private Integer userId;
+	private Integer courseId;
+	private Boolean status;
 }

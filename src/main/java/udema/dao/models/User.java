@@ -19,4 +19,5 @@ public class User {
 	private String avatar;
 	private Timestamp createdAt;
 	private Integer roleId;
+	private Boolean status;
 }

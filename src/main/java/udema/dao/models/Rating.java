@@ -16,4 +16,5 @@ public class Rating {
 	private Integer starValue;
 	private Integer courseId;
 	private Timestamp createdAt;
+	private Boolean status;
 }

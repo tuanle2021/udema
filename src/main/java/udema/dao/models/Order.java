@@ -11,4 +11,5 @@ public class Order {
 	private Integer id;
 	private Integer studentId;
 	private Double totalMoney;
+	private Integer status;
 }
