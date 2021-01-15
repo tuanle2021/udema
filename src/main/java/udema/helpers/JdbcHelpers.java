@@ -7,19 +7,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class JdbcHelpers {
-	private static String url = "jdbc:mysql://localhost/udema?useUnicode=true&characterEncoding=UTF-8";
-	private static String user = "root";
-	private static String password = "";
+import static udema.constants.Constants.*;
 
+public class JdbcHelpers {
 	public static Connection getConnection() {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-
-			Connection conn = DriverManager.getConnection(url, user, password);
+			Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
 			return conn;
 		} catch (Exception e) {
-			System.out.println("Không thể nạp driver");
 			e.printStackTrace();
 			return null;
 		}

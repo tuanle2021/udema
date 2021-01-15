@@ -3,6 +3,7 @@
 <decorators defaultdir="/decorators">
 	<excludes>
 		<pattern>/login*</pattern>
+		<pattern>/register*</pattern>
 	</excludes>
 
 	<decorator name="admin" page="/WEB-INF/templates/admin/template.jsp">
