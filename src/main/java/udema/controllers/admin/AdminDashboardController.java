@@ -18,7 +18,6 @@ public class AdminDashboardController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.setAttribute("name", "son");
 		request.getRequestDispatcher("/WEB-INF/views/admin/index.jsp").forward(request, response);
 	}
 

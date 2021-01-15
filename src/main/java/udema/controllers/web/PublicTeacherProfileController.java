@@ -15,7 +15,6 @@ public class PublicTeacherProfileController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.setAttribute("name", "son");
 		request.getRequestDispatcher("/WEB-INF/views/public/teacher/profile.jsp").forward(request, response);
 	}
 

@@ -38,7 +38,7 @@
   </div>
   <!-- /.container-wrapper-->
   <%@ include file="/WEB-INF/partials/admin/footer.jsp" %>
-  <decorator:getProperty property="page.script" />
   <%@ include file="/WEB-INF/partials/admin/javascripts.jsp" %>
+  <decorator:getProperty property="page.script" />
 </body>
 </html>

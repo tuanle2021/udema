@@ -15,7 +15,6 @@ public class AdminCoursesIndexController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.setAttribute("name", "son");
 		request.getRequestDispatcher("/WEB-INF/views/admin/messages/index.jsp").forward(request, response);
 	}
 

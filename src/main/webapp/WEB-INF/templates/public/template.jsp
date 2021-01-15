@@ -33,7 +33,7 @@
     <!--/footer-->
 	</div>
 	<!-- page -->
-  <decorator:getProperty property="page.script" />
   <%@ include file="/WEB-INF/partials/public/javascripts.jsp" %>
+  <decorator:getProperty property="page.script" />
 </body>
 </html>

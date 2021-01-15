@@ -15,7 +15,6 @@ public class AdminReviewsController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.setAttribute("name", "son");
 		request.getRequestDispatcher("/WEB-INF/views/admin/reviews/index.jsp").forward(request, response);
 	}
 

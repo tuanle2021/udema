@@ -66,6 +66,16 @@
       </div>
     </div>
   </div>
+  <div class="header_box version_2">
+    <h2><i class="fa fa-file-text"></i>Content</h2>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-group">
+        <textarea name="content" cols="80" id="ckeditor" name="ckeditor" rows="10"></textarea>
+      </div>
+    </div>
+  </div>
   <!-- /row-->
   <div class="row">
     <div class="col-md-12">
@@ -122,3 +132,8 @@
 </div>
 <!-- /box_general-->
 <p><a href="#0" class="btn_1 medium">Save</a></p>
+<content tag="script">
+<script>
+  CKEDITOR.replace('ckeditor');
+</script>
+</content>

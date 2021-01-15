@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlrewrite>
+	<rule>
+		<from>/course/(.*)-([0-9]+)</from>
+		<to>/course-detail?id=$2</to>
+	</rule>
+</urlrewrite>

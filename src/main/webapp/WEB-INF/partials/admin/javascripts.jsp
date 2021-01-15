@@ -17,4 +17,5 @@
 <!-- Custom scripts for this page-->
 <script src="/assets/admin/vendor/dropzone.min.js"></script>
 <script src="/assets/admin/vendor/bootstrap-datepicker.js"></script>
+<script src="/assets/admin/vendor/ckeditor4/ckeditor.js"></script>
 <script>$('input.date-pick').datepicker();</script>
