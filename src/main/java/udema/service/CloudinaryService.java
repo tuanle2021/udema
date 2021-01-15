@@ -10,6 +10,7 @@ import com.cloudinary.utils.ObjectUtils;
 
 public class CloudinaryService {
     private Cloudinary cloudinary;
+    private static final String INFO_URL = "url";
 
     public CloudinaryService() {
     	cloudinary = new Cloudinary(ObjectUtils.asMap(
@@ -18,16 +19,15 @@ public class CloudinaryService {
             "api_secret", "bGNmTk50_cFwhlJq-6DPY6FvCCk"
         ));
 	}
-    private static final String INFO_URL = "url";
 
     @SuppressWarnings("unchecked")
-	public String upload(File file) throws IOException {
-        Map<String, String> uploadResult = cloudinary.uploader().upload(file, ObjectUtils.emptyMap());
+	public String upload(byte[] bytes) throws IOException {
+        Map<String, Object> uploadResult = cloudinary.uploader().upload(bytes, ObjectUtils.emptyMap());
         return (String) uploadResult.get(INFO_URL);
     }
 
     @SuppressWarnings("unchecked")
-	public Map<String, String> uploadAndInfo(File file) throws IOException {
+	public Map<String, Object> uploadAndInfo(File file) throws IOException {
         return cloudinary.uploader().upload(file, ObjectUtils.emptyMap());
     }
 }
