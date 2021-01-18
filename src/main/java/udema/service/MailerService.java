@@ -9,7 +9,7 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-import udema.constants.Constants;
+import udema.constants.EmailTemplates;
 
 public class MailerService {
 	public static final String CONTENT_TYPE = "text/html";
@@ -42,7 +42,7 @@ public class MailerService {
 		message.setFrom(new InternetAddress(from));
 		message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
 		message.setSubject("[Udema] Otp authentication code");
-		message.setContent(Constants.REGISTER_TEMPLATE, CONTENT_TYPE);
+		message.setContent(EmailTemplates.FORGOT_TEMPLATE, CONTENT_TYPE);
 
 		Transport.send(message);
 	}
