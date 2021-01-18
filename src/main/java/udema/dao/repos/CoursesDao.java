@@ -13,7 +13,7 @@ import udema.dao.models.Course;
 import udema.dao.models.User;
 import udema.helpers.JdbcHelpers;
 
-public class CoursesDAO {
+public class CoursesDao {
 	private ResultSet rs;
 	private Statement st;
 	private PreparedStatement pst;
