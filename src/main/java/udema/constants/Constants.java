@@ -71,7 +71,7 @@ public class Constants {
         "</body>"+
         "</html>";
 	public static final String FOGOT_TEMPLATE = null;
-	public static final String CREDENTIALS = "CREDENTIALS";
+	public static final String CREDENTIALS = "credentials";
 	public static final Integer ROLE_STUDENT = 1;
 	public static final Integer ROLE_ADMIN = 2;
 	public static final Integer ROLE_TEACHER = 3;
