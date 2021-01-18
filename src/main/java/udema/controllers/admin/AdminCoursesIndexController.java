@@ -10,15 +10,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import udema.dao.models.Course;
-import udema.dao.repos.CoursesDAO;
+import udema.dao.repos.CoursesDao;
 
 @WebServlet(urlPatterns = "/admin/courses")
 public class AdminCoursesIndexController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private CoursesDAO courseDAO;
+	private CoursesDao courseDAO;
 
 	public AdminCoursesIndexController() {
-		courseDAO = new CoursesDAO();
+		courseDAO = new CoursesDao();
 	}
 
 	@Override
