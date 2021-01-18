@@ -10,13 +10,15 @@ import com.cloudinary.utils.ObjectUtils;
 
 public class CloudinaryService {
     private Cloudinary cloudinary;
+    private ConfigService configService;
     private static final String INFO_URL = "url";
 
     public CloudinaryService() {
+    	configService = new ConfigService();
     	cloudinary = new Cloudinary(ObjectUtils.asMap(
-            "cloud_name", "dqceu7sxd",
-            "api_key", "338579227615242",
-            "api_secret", "bGNmTk50_cFwhlJq-6DPY6FvCCk"
+            "cloud_name", configService.get("cloudinay.cloud_name"),
+            "api_key", configService.get("cloudinay.api_key"),
+            "api_secret", configService.get("cloudinay.api_secret")
         ));
 	}
 
