@@ -7,13 +7,21 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import static udema.constants.Constants.*;
+import udema.service.ConfigService;
 
 public class JdbcHelpers {
+	private static ConfigService configService = null;
+
 	public static Connection getConnection() {
 		try {
+			if (configService == null) {
+				configService = new ConfigService();
+			}
+			final String url = configService.get("db.url");
+			final String user = configService.get("db.user");
+			final String password = configService.get("db.password");
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+			Connection conn = DriverManager.getConnection(url, user, password);
 			return conn;
 		} catch (Exception e) {
 			e.printStackTrace();
