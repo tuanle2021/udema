@@ -42,7 +42,7 @@ public class MailerService {
 		message.setFrom(new InternetAddress(from));
 		message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
 		message.setSubject("[Udema] Otp authentication code");
-		message.setContent(Constants.REGISTER_TEMPLATE, CONTENT_TYPE);
+		message.setContent(Constants.FORGOT_TEMPLATE, CONTENT_TYPE);
 
 		Transport.send(message);
 	}
