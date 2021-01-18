@@ -108,7 +108,7 @@ public class EmailTemplates {
 	            "</div>"+
 	            "<br>"+
 	            "<div>"+
-	                "<span class='font-style'>Hi Son,</span>"+
+	                "<span class='font-style'>Hi ${username},</span>"+
 	            "</div>"+
 	            "<br>"+
 	            "<div>"+
@@ -116,7 +116,7 @@ public class EmailTemplates {
 	            "</div>"+
 	            "<br>"+
 	            "<div class='link'>"+
-	                "<a href='https://codelearn.io/sharing/graphql-va-uu-diem-so-voi-rest-api' class='a font-style'>Click here</a>"+
+	                "<a href='${link}' class='a font-style'>Click here</a>"+
 	            "</div>"+
 	            "<br>"+
 	            "<div>"+
@@ -124,7 +124,7 @@ public class EmailTemplates {
 	            "</div>"+
 	            "<br>"+
 	            "<div>"+
-	            "<a href='https://codelearn.io/sharing/graphql-va-uu-diem-so-voi-rest-api' class='font-style color'>https://codelearn.io/sharing/graphql-va-uu-diem-so-voi-rest-api</a>"+
+	            "<a href='${link}' class='font-style color'>${link}</a>"+
 	            "</div>"+
 	            "<br>"+
 	            "<div>"+
