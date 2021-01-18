@@ -1,3 +1,15 @@
 /*============================================================================================*/
 /* Your custom styles below */
 /*============================================================================================*/
+li.user-icon span a img {
+  width: 30px;
+  border-radius: 50%;
+}
+
+li.user-icon ul {
+  left: -167px !important;
+}
+
+li.user-icon ul::before {
+  display: none !important;
+}

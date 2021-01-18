@@ -54,7 +54,7 @@ public class PublicAuthLoginController extends HttpServlet {
 		Integer roleId = user.getRoleId();
 
 		if (roleId == Constants.ROLE_STUDENT) {
-			response.sendRedirect("/");
+			response.sendRedirect("/home");
 			return;
 		}
 

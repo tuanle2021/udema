@@ -7,11 +7,11 @@
   <div id="logo">
     <a href="index.html"><img src="/assets/public/img/logo.png" width="149" height="42" data-retina="true" alt=""></a>
   </div>
-  <ul id="top_menu">
+  <!-- <ul id="top_menu">
     <li><a href="login.html" class="login">Login</a></li>
-    <li><a href="#0" class="search-overlay-menu-btn">Search</a></li>
+    <li><a href="#0" class="search-overlay-menu-btn" style="top: 6px">Search</a></li>
     <li class="hidden_tablet"><a href="admission.html" class="btn_1 rounded">Admission</a></li>
-  </ul>
+  </ul> -->
   <!-- /top_menu -->
   <a href="#menu" class="btn_mobile">
     <div class="hamburger hamburger--spin" id="hamburger">
@@ -71,7 +71,17 @@
           <li><a href="icon-pack-4.html">Icon pack 4</a></li>
         </ul>
       </li>
-      <li><span><a href="#0">Buy template</a></span></li>
+      <li class="user-icon">
+        <span>
+          <a href="#0">
+            <img src="https://retailx.com/wp-content/uploads/2019/12/iStock-476085198.jpg" />
+          </a>
+        </span>
+        <ul>
+          <li><a href="media-gallery.html">tuanle</a></li>
+          <li><a href="cart-3.html">Logout</a></li>
+        </ul>
+      </li>
     </ul>
   </nav>
   <!-- Search Menu -->
