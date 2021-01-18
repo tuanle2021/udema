@@ -16,46 +16,44 @@
     <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="img/apple-touch-icon-144x144-precomposed.png">
     <%@ include file="/WEB-INF/partials/public/styles.jsp" %>
 </head>
-
 <body id="login_bg">
-	
 	<nav id="menu" class="fake_menu"></nav>
-	
 	<div id="preloader">
 		<div data-loader="circle-side"></div>
 	</div>
 	<!-- End Preload -->
-	
 	<div id="login">
 		<aside>
 			<figure>
 				<a href="index.html"><img src="/assets/public/img/logo.png" width="149" height="42" data-retina="true" alt=""></a>
 			</figure>
-			  <form>
+			<form action="/login" method="POST" data-parsley-validate>
 				<div class="access_social">
-					<a href="#0" class="social_bt facebook">Login with Facebook</a>
+					<!-- <a href="#0" class="social_bt facebook">Login with Facebook</a> -->
 					<a href="#0" class="social_bt google">Login with Google</a>
-					<a href="#0" class="social_bt linkedin">Login with Linkedin</a>
+					<!-- <a href="#0" class="social_bt linkedin">Login with Linkedin</a> -->
 				</div>
 				<div class="divider"><span>Or</span></div>
 				<div class="form-group">
 					<span class="input">
-					<input class="input_field" type="email" autocomplete="off" name="email">
+					<input class="input_field" type="email" autocomplete="off" name="email"
+						data-parsley-type="email" data-parsley-type-message="Please type a correct email format"
+						data-parsley-required data-parsley-required-message="Please type your email" >
 						<label class="input_label">
 						<span class="input__label-content">Your email</span>
 					</label>
 					</span>
-
 					<span class="input">
-					<input class="input_field" type="password" autocomplete="new-password" name="password">
+					<input class="input_field" type="password" autocomplete="off" name="password"
+						data-parsley-required data-parsley-required-message="Please type your password">
 						<label class="input_label">
 						<span class="input__label-content">Your password</span>
 					</label>
 					</span>
-					<small><a href="#0">Forgot password?</a></small>
+					<small><a href="/forgot-password">Forgot password?</a></small>
 				</div>
-				<a href="#0" class="btn_1 rounded full-width add_top_60">Login to Udema</a>
-				<div class="text-center add_top_10">New to Udema? <strong><a href="register.html">Sign up!</a></strong></div>
+				<button type="submit" class="btn_1 rounded full-width add_top_60">Login to Udema</button>
+				<div class="text-center add_top_10">New to Udema? <strong><a href="/signup">Sign up!</a></strong></div>
 			</form>
 			<div class="copy">© 2017 Udema</div>
 		</aside>

@@ -5,3 +5,4 @@
 <script src="/assets/public/js/modernizr_tables.js"></script>
 <script src="/assets/public/js/tables_func.js"></script>
 <script src="/assets/public/js/pw_strenght.js"></script>
+<script src="/assets/public/vendors/parsley/parsley.min.js"></script>
