@@ -71,17 +71,26 @@
           <li><a href="icon-pack-4.html">Icon pack 4</a></li>
         </ul>
       </li>
+      <c:if test="${credentials != null}">
       <li class="user-icon">
         <span>
           <a href="#0">
-            <img src="https://retailx.com/wp-content/uploads/2019/12/iStock-476085198.jpg" />
+            <img src="${credentials.avatar}" />
           </a>
         </span>
         <ul>
-          <li><a href="media-gallery.html">tuanle</a></li>
-          <li><a href="cart-3.html">Logout</a></li>
+          <li><a href="/myprofile">${credentials.email}</a></li>
+          <li><a href="/logout">Logout</a></li>
         </ul>
       </li>
+      </c:if>
+      <c:if test="${credentials == null}">
+      <li>
+      	 <span>
+          <a href="/login">Login</a>
+        </span>
+      </li>
+      </c:if>
     </ul>
   </nav>
   <!-- Search Menu -->

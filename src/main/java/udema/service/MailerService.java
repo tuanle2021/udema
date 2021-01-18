@@ -1,5 +1,7 @@
 package udema.service;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 
 import javax.mail.Message;
@@ -9,7 +11,8 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-import udema.constants.Constants;
+import udema.constants.EmailTemplates;
+import udema.service.params.MailParams;
 
 public class MailerService {
 	public static final String CONTENT_TYPE = "text/html";
@@ -19,9 +22,7 @@ public class MailerService {
 		configService = new ConfigService();
 	}
 
-	public void sendEmail() throws Exception {
-		final String to = "hoangtuanle2021+test@gmail.com";
-		final String from = configService.get("mail.username");
+	public void sendEmail(MailParams params) throws Exception {
 		final String username = configService.get("mail.username");
 		final String password = configService.get("mail.password");
 
@@ -39,15 +40,34 @@ public class MailerService {
 		});
 
 		final Message message = new MimeMessage(session);
-		message.setFrom(new InternetAddress(from));
-		message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
-		message.setSubject("[Udema] Otp authentication code");
-		message.setContent(Constants.REGISTER_TEMPLATE, CONTENT_TYPE);
+		message.setFrom(new InternetAddress(params.getFrom()));
+		message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(params.getTo()));
+		message.setSubject(params.getSubject());
 
+		String template = params.getTemplate();
+		Map<String, String> bindingParams = params.getParams();
+		if (bindingParams != null) {
+			for (Map.Entry<String, String> entry : bindingParams.entrySet()) {
+				template = template.replace("${" + entry.getKey() + "}", entry.getValue());
+			}
+		}
+		message.setContent(template, CONTENT_TYPE);
 		Transport.send(message);
 	}
 
 	public static void main(String[] args) throws Exception {
-		new MailerService().sendEmail();
+		Map<String, String> map = new HashMap<>();
+		map.put("username", "Son");
+		map.put("link", "https://stackoverflow.com/questions/18601011/replace-string-values-with-value-in-hash-map/18601139");
+
+		MailParams mailParams = MailParams.builder()
+				.from("hoangtuanle2021@gmail.com")
+				.to("hoangtuanle2021@gmail.com")
+				.subject("[Udema] Verify forgot password")
+				.template(EmailTemplates.FORGOT_TEMPLATE)
+				.params(map)
+				.build();
+
+		new MailerService().sendEmail(mailParams);
 	}
 }
