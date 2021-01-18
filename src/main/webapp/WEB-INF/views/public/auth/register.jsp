@@ -29,48 +29,59 @@
 			<figure>
 				<a href="index.html"><img src="/assets/public/img/logo.png" width="149" height="42" data-retina="true" alt=""></a>
 			</figure>
-			<form autocomplete="off">
+			<form autocomplete="off" data-parsley-validate method="post">
 				<div class="form-group">
 
 					<span class="input">
-					<input class="input_field" type="text">
+					<input class="input_field" type="text" name="fullname"
+						data-parsley-required data-parsley-required-message="Please type your name" >
 						<label class="input_label">
 						<span class="input__label-content">Your Name</span>
 					</label>
 					</span>
 
 					<span class="input">
-					<input class="input_field" type="text">
-						<label class="input_label">
-						<span class="input__label-content">Your Last Name</span>
-					</label>
-					</span>
-
-					<span class="input">
-					<input class="input_field" type="email">
+					<input class="input_field" type="email" name="email"
+						data-parsley-type="email" data-parsley-type-message="Please type a correct email format"
+						data-parsley-required data-parsley-required-message="Please type your email" >
 						<label class="input_label">
 						<span class="input__label-content">Your Email</span>
 					</label>
 					</span>
 
 					<span class="input">
-					<input class="input_field" type="password" id="password1">
+							<select id="gender" class="input_field" name="gender"
+							data-parsley-required data-parsley-required-message="Please select you gender" >
+								<option value="male">Male</option>
+								<option value="female">Female</option>
+								<option value="unknow">Unknow</option>
+							</select>
+							<label class="input_label">
+							<!-- <span class="input__label-content">Your Gender</span> -->
+						</label>
+					</span>
+
+					<span class="input">
+					<input class="input_field" type="password" id="password1" name="password"
+						data-parsley-required data-parsley-required-message="Please type your password">
 						<label class="input_label">
 						<span class="input__label-content">Your password</span>
 					</label>
 					</span>
 
 					<span class="input">
-					<input class="input_field" type="password" id="password2">
+					<input class="input_field" type="password" id="password2" name="confirmPassword"
+						data-parsley-required data-parsley-required-message="Please type again your password">
 						<label class="input_label">
 						<span class="input__label-content">Confirm password</span>
 					</label>
 					</span>
 					
 					<div id="pass-info" class="clearfix"></div>
+					
 				</div>
-				<a href="#0" class="btn_1 rounded full-width add_top_30">Register to Udema</a>
-				<div class="text-center add_top_10">Already have an acccount? <strong><a href="login.html">Sign In</a></strong></div>
+				<button type="submit" class="btn_1 rounded full-width add_top_30">Register to Udema</button>
+				<div class="text-center add_top_10">Already have an acccount? <strong><a href="login">Sign In</a></strong></div>
 			</form>
 			<div class="copy">© 2017 Udema</div>
 		</aside>

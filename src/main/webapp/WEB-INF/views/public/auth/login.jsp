@@ -53,7 +53,7 @@
 					<small><a href="/forgot-password">Forgot password?</a></small>
 				</div>
 				<button type="submit" class="btn_1 rounded full-width add_top_60">Login to Udema</button>
-				<div class="text-center add_top_10">New to Udema? <strong><a href="/signup">Sign up!</a></strong></div>
+				<div class="text-center add_top_10">New to Udema? <strong><a href="/register">Register!</a></strong></div>
 			</form>
 			<div class="copy">© 2017 Udema</div>
 		</aside>

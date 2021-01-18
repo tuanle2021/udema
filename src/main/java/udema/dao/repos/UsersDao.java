@@ -38,4 +38,28 @@ public class UsersDao {
 		}
 		return user;
 	}
+
+	public int createOne(User user) {
+		int isCreated = 0;
+		conn = JdbcHelpers.getConnection();
+		String sql = "INSERT INTO users(email, password, fullName, gender, avatar, roleId) VALUEs (?,?,?,?,?,?)";
+
+		try {
+			pst = conn.prepareStatement(sql);
+			pst.setString(1, user.getEmail());
+			pst.setString(2, user.getPassword());
+			pst.setString(3, user.getFullName());
+			pst.setString(4, user.getGender());
+			pst.setString(5, user.getAvatar());
+			pst.setInt(6, user.getRoleId());
+
+			isCreated = pst.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JdbcHelpers.close(rs, pst, conn);
+		}
+
+		return isCreated;
+	}
 }
