@@ -11,7 +11,7 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-import udema.constants.EmailTemplates;
+import udema.helpers.ResourcesHelper;
 import udema.service.params.MailParams;
 
 public class MailerService {
@@ -45,8 +45,8 @@ public class MailerService {
 		message.setSubject(params.getSubject());
 
 		String template = params.getTemplate();
-		Map<String, String> bindingParams = params.getParams();
-		if (bindingParams != null) {
+		final Map<String, String> bindingParams = params.getParams();
+		if (bindingParams != null && template != null) {
 			for (Map.Entry<String, String> entry : bindingParams.entrySet()) {
 				template = template.replace("${" + entry.getKey() + "}", entry.getValue());
 			}
@@ -55,19 +55,44 @@ public class MailerService {
 		Transport.send(message);
 	}
 
-	public static void main(String[] args) throws Exception {
+	public static void demoResiter() throws Exception {
 		Map<String, String> map = new HashMap<>();
 		map.put("username", "Son");
 		map.put("link", "https://stackoverflow.com/questions/18601011/replace-string-values-with-value-in-hash-map/18601139");
+
+		String template = ResourcesHelper.getResourceAsString("templates/forgot-password.html");
 
 		MailParams mailParams = MailParams.builder()
 				.from("hoangtuanle2021@gmail.com")
 				.to("hoangtuanle2021@gmail.com")
 				.subject("[Udema] Verify forgot password")
-				.template(EmailTemplates.FORGOT_TEMPLATE)
+				.template(template)
 				.params(map)
 				.build();
 
 		new MailerService().sendEmail(mailParams);
+	}
+
+	public static void demoForgotPassword() throws Exception {
+		Map<String, String> map = new HashMap<>();
+		map.put("username", "Son");
+		map.put("otpCode", "123456");
+
+		String template = ResourcesHelper.getResourceAsString("templates/register-otp.html");
+
+		MailParams mailParams = MailParams.builder()
+				.from("hoangtuanle2021@gmail.com")
+				.to("hoangtuanle2021@gmail.com")
+				.subject("[Udema] Verify OTP code")
+				.template(template)
+				.params(map)
+				.build();
+
+		new MailerService().sendEmail(mailParams);
+	}
+
+	public static void main(String[] args) throws Exception {
+		demoForgotPassword();
+		demoResiter();
 	}
 }
