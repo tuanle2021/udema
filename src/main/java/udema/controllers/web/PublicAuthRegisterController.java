@@ -1,6 +1,7 @@
 package udema.controllers.web;
 
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import udema.dao.models.OtpCode;
 import udema.dao.models.User;
 import udema.dao.repos.UsersDao;
 import udema.helpers.OtpCodeHelpers;
@@ -75,6 +77,8 @@ public class PublicAuthRegisterController extends HttpServlet {
 		// send mail
 		Map<String, String> map = new HashMap<>();
 		String otpCode = codeHelpers.generateCode();
+		Timestamp currentTime = new Timestamp(System.currentTimeMillis());
+		OtpCode otp = new OtpCode(null, otpCode, null, email, null, null, null);
 		map.put("username", fullname);
 		map.put("otpCode", otpCode);
 

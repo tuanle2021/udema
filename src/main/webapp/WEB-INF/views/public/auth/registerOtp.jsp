@@ -27,7 +27,7 @@
 			<figure>
 				<a href="index.html"><img src="/assets/public/img/logo.png" width="149" height="42" data-retina="true" alt=""></a>
 			</figure>
-			<form action="/login" method="POST" data-parsley-validate>
+			<form action="/register-otp" method="POST" data-parsley-validate>
 				<div class="access_social">
 					<!-- <a href="#0" class="social_bt facebook">Login with Facebook</a> -->
 					<a href="#0" class="social_bt google">Confirm OTP</a>

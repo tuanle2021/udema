@@ -81,4 +81,25 @@ public class UsersDao {
 		}
 		return user;
 	}
+
+	public int activeOneByEmail(String email, int status) {
+		int isUpdated = 0;
+		conn = JdbcHelpers.getConnection();
+		String sql = "UPDATE users SET status = ? WHERE email = ?";
+
+		try {
+			pst = conn.prepareStatement(sql);
+			pst.setInt(1, status);
+			pst.setString(2, email);
+
+			isUpdated = pst.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JdbcHelpers.close(rs, pst, conn);
+		}
+
+		return isUpdated;
+	}
+
 }
