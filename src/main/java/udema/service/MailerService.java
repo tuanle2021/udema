@@ -15,7 +15,7 @@ import udema.helpers.ResourcesHelper;
 import udema.service.params.MailParams;
 
 public class MailerService {
-	public static final String CONTENT_TYPE = "text/html";
+	public static final String CONTENT_TYPE = "text/html ;charset=UTF-8";
 	private ConfigService configService;
 
 	public MailerService() {
