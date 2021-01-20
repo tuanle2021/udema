@@ -2,6 +2,7 @@ package udema.controllers.web;
 
 import java.io.IOException;
 import java.sql.Timestamp;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,9 +14,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import udema.dao.models.OtpCode;
 import udema.dao.models.User;
+import udema.dao.repos.OtpCodeDao;
 import udema.dao.repos.UsersDao;
 import udema.helpers.OtpCodeHelpers;
 import udema.helpers.ResourcesHelper;
+import udema.service.ConfigService;
 import udema.service.MailerService;
 import udema.service.PasswordEncoder;
 import udema.service.params.MailParams;
@@ -28,6 +31,8 @@ public class PublicAuthRegisterController extends HttpServlet {
 	private PasswordEncoder passwordEncoder;
 	private MailerService mailerService;
 	private OtpCodeHelpers codeHelpers;
+	private ConfigService configService;
+	private OtpCodeDao otpCodeDao;
 
 	public PublicAuthRegisterController() {
 		super();
@@ -35,6 +40,8 @@ public class PublicAuthRegisterController extends HttpServlet {
 		passwordEncoder = new PasswordEncoder();
 		mailerService = new MailerService();
 		codeHelpers = new OtpCodeHelpers();
+		otpCodeDao = new OtpCodeDao();
+		configService = new ConfigService();
 	}
 
 	@Override
@@ -63,9 +70,7 @@ public class PublicAuthRegisterController extends HttpServlet {
 			return;
 		}
 
-		password = passwordEncoder.encode(password);
-		user = new User(null, email, password, fullname, gender, "", null, Constants.ROLE_STUDENT, false);
-
+		user = new User(null, email, passwordEncoder.encode(password), fullname, gender, "", null, Constants.ROLE_STUDENT, false);
 		int isCreated = usersDao.createOne(user);
 
 		if (isCreated < 1) {
@@ -73,17 +78,18 @@ public class PublicAuthRegisterController extends HttpServlet {
 			return;
 		}
 
-
+		String code = codeHelpers.generateCode();
+		Integer timeout = Integer.parseInt(configService.get("auth.register-timeout"));
+		Calendar cal = Calendar.getInstance();
+		cal.add(Calendar.MINUTE, timeout);
+		Timestamp expiredTime = new Timestamp(cal.getTimeInMillis());
+		otpCodeDao.createOne(new OtpCode(null, code, 0, email, expiredTime, null, null));
+		
 		// send mail
 		Map<String, String> map = new HashMap<>();
-		String otpCode = codeHelpers.generateCode();
-		Timestamp currentTime = new Timestamp(System.currentTimeMillis());
-		OtpCode otp = new OtpCode(null, otpCode, null, email, null, null, null);
 		map.put("username", fullname);
-		map.put("otpCode", otpCode);
-
+		map.put("otpCode", code);
 		String template = ResourcesHelper.getResourceAsString("templates/register-otp.html");
-
 		MailParams mailParams = MailParams.builder()
 				.from("hoangtuanle2021@gmail.com")
 				.to(email)
@@ -93,14 +99,14 @@ public class PublicAuthRegisterController extends HttpServlet {
 				.build();
 
 		try {
-			mailerService.sendEmail(mailParams);	
+			mailerService.sendEmail(mailParams);
 		} catch (Exception e) {
 			e.printStackTrace();
-			response.sendRedirect("/register?msg=registerErr");
+			response.sendRedirect("/register?msg=registerErrMail");
 			return;
 		}
 
-		response.sendRedirect("/register-otp?msg=Success");
+		response.sendRedirect("/register-otp?msg=success");
 		return;
 	}
 }

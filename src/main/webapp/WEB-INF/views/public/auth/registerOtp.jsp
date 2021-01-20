@@ -15,6 +15,7 @@
     <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="img/apple-touch-icon-114x114-precomposed.png">
     <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="img/apple-touch-icon-144x144-precomposed.png">
     <%@ include file="/WEB-INF/partials/public/styles.jsp" %>
+    <%@ include file="/WEB-INF/common/taglib.jsp" %>
 </head>
 <body id="login_bg">
 	<nav id="menu" class="fake_menu"></nav>
@@ -27,6 +28,9 @@
 			<figure>
 				<a href="index.html"><img src="/assets/public/img/logo.png" width="149" height="42" data-retina="true" alt=""></a>
 			</figure>
+			<c:if test="${param['msg'] == 'success' }">
+				<div style="color: green;">Please check your email to get your OTP code</div>
+			</c:if>
 			<form action="/register-otp" method="POST" data-parsley-validate>
 				<div class="access_social">
 					<!-- <a href="#0" class="social_bt facebook">Login with Facebook</a> -->
