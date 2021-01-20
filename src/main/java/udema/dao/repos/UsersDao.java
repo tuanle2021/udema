@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import udema.dao.models.OtpCode;
 import udema.dao.models.User;
 import udema.helpers.JdbcHelpers;
 
@@ -80,5 +81,28 @@ public class UsersDao {
 			JdbcHelpers.close(rs, pst, conn);
 		}
 		return user;
+	}
+
+	public int updateOne(User user) {
+		int isUpdated = 0;
+		conn = JdbcHelpers.getConnection();
+		String sql = "UPDATE users SET password = ?, fullName = ?, gender = ?, avatar = ?, roleId = ?, status = ? WHERE id = ?";
+
+		try {
+			pst = conn.prepareStatement(sql);
+			pst.setString(1, user.getPassword());
+			pst.setString(2, user.getFullName());
+			pst.setString(3, user.getGender());
+			pst.setString(4, user.getAvatar());
+			pst.setInt(5, user.getRoleId());
+			pst.setBoolean(6, user.getStatus());
+			pst.setInt(7, user.getId());
+			isUpdated = pst.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JdbcHelpers.close(rs, pst, conn);
+		}
+		return isUpdated;
 	}
 }

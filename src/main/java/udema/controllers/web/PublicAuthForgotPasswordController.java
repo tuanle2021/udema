@@ -70,7 +70,7 @@ public class PublicAuthForgotPasswordController extends HttpServlet {
 		Map<String, String> map = new HashMap<>();
 		String name = user.getFullName() != null ? user.getFullName() : user.getEmail();
 		map.put("name", name);
-		map.put("link", configService.get("app.url") + "/forgot/password/verify?code=" + code);
+		map.put("link", configService.get("app.url") + "/forgot/password/new?code=" + code);
 		String template = ResourcesHelper.getResourceAsString("templates/forgot-password.html");
 		MailParams mailParams = MailParams.builder()
 				.from("hoangtuanle2021@gmail.com")
