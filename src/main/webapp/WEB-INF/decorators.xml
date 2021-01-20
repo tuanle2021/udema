@@ -4,6 +4,7 @@
 	<excludes>
 		<pattern>/login*</pattern>
 		<pattern>/register*</pattern>
+		<pattern>/forgot*</pattern>
 	</excludes>
 
 	<decorator name="admin" page="/WEB-INF/templates/admin/template.jsp">
