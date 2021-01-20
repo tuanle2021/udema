@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import udema.dao.models.OtpCode;
 import udema.dao.models.User;
 import udema.helpers.JdbcHelpers;
 
@@ -98,7 +97,26 @@ public class UsersDao {
 			pst.setBoolean(6, user.getStatus());
 			pst.setInt(7, user.getId());
 			isUpdated = pst.executeUpdate();
-		} catch (SQLException e) {
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JdbcHelpers.close(rs, pst, conn);
+		}
+		return isUpdated;
+	}
+
+	public int activeOneByEmail(String email, int status) {
+		int isUpdated = 0;
+		conn = JdbcHelpers.getConnection();
+		String sql = "UPDATE users SET status = ? WHERE email = ?";
+
+		try {
+			pst = conn.prepareStatement(sql);
+			pst.setInt(1, status);
+			pst.setString(2, email);
+
+			isUpdated = pst.executeUpdate();
+		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			JdbcHelpers.close(rs, pst, conn);

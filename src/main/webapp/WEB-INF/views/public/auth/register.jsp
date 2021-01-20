@@ -15,6 +15,7 @@
     <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="img/apple-touch-icon-114x114-precomposed.png">
     <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="img/apple-touch-icon-144x144-precomposed.png">
     <%@ include file="/WEB-INF/partials/public/styles.jsp" %>
+     <%@ include file="/WEB-INF/common/taglib.jsp" %>
 </head>
 <body id="register_bg">
 	<nav id="menu" class="fake_menu"></nav>
@@ -29,6 +30,19 @@
 			<figure>
 				<a href="index.html"><img src="/assets/public/img/logo.png" width="149" height="42" data-retina="true" alt=""></a>
 			</figure>
+			
+			<c:if test="${param['msg'] == 'registerErrExist' }">
+				<div style="color: red">Email already exist</div>
+			</c:if>
+			<c:if test="${param['msg'] == 'registerErrPass' }">
+				<div style="color: red">Confirm password is incorrect</div>
+			</c:if>
+			<c:if test="${param['msg'] == 'registerErr' }">
+				<div style="color: red">Error while create user</div>
+			</c:if>
+			<c:if test="${param['msg'] == 'registerErrMail' }">
+				<div style="color: red">Error while send email</div>
+			</c:if>
 			<form autocomplete="off" data-parsley-validate method="post">
 				<div class="form-group">
 
