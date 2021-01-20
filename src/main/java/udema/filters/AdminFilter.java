@@ -1,5 +1,7 @@
 package udema.filters;
 
+import static udema.constants.Constants.ASSETS_FOLDER;
+
 import java.io.IOException;
 import java.util.Arrays;
 
@@ -30,7 +32,11 @@ public class AdminFilter implements Filter {
 		HttpServletRequest request = (HttpServletRequest) req;
 		HttpServletResponse response = (HttpServletResponse) resp;
 
-		if (request.getRequestURI().startsWith("/" + Constants.ASSETS_FOLDER)) {
+		Boolean isExcluded = Arrays.asList(ASSETS_FOLDER).stream().anyMatch(each -> {
+			return request.getRequestURI().startsWith("/" + each);
+		});
+
+		if (isExcluded) {
 			chain.doFilter(req, resp);
 			return;
 		}
@@ -43,11 +49,11 @@ public class AdminFilter implements Filter {
 			return;
 		}
 
-		// find database
-		User user = (User) loginValue;
-		Integer userId = user.getId();
-		// find user from db
-		if (!user.getStatus()) {
+		User sessionUser = (User) loginValue;
+		Integer userId = sessionUser.getId();
+		User user = usersDao.findById(userId);
+
+		if (user == null || !user.getStatus()) {
 			response.sendRedirect("/login");
 			return;
 		}

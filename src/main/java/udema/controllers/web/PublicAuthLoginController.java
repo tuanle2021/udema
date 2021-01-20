@@ -48,6 +48,11 @@ public class PublicAuthLoginController extends HttpServlet {
 			return;
 		}
 
+		if (!user.getStatus()) {
+			response.sendRedirect("/login?msg=loginError&type=status");
+			return;
+		}
+
 		/** Login successfully */
 		HttpSession session = request.getSession();
 		session.setAttribute(Constants.CREDENTIALS, user);

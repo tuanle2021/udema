@@ -62,4 +62,23 @@ public class UsersDao {
 
 		return isCreated;
 	}
+
+	public User findById(Integer id) {
+		User user = null;
+		conn = JdbcHelpers.getConnection();
+		String sql = "SELECT * FROM users WHERE id = ?";
+		try {
+			pst = conn.prepareStatement(sql);
+			pst.setInt(1, id);
+			rs = pst.executeQuery();
+			if (rs.next()) {
+				user = mapRow(rs);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JdbcHelpers.close(rs, pst, conn);
+		}
+		return user;
+	}
 }
