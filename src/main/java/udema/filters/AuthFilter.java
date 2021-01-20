@@ -22,6 +22,12 @@ public class AuthFilter implements Filter {
 			throws IOException, ServletException {
 		HttpServletRequest request = (HttpServletRequest) req;
 		HttpServletResponse response = (HttpServletResponse) resp;
+
+		if (request.getRequestURI().startsWith("/" + Constants.ASSETS_FOLDER)) {
+			chain.doFilter(req, resp);
+			return;
+		}
+
 		HttpSession session = request.getSession();
 		Object loginValue = session.getAttribute(Constants.CREDENTIALS);
 

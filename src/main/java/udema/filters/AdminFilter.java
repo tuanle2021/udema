@@ -15,14 +15,26 @@ import javax.servlet.http.HttpSession;
 
 import udema.constants.Constants;
 import udema.dao.models.User;
+import udema.dao.repos.UsersDao;
 
 @WebFilter("/admin/*")
 public class AdminFilter implements Filter {
+	private UsersDao usersDao;
+
+	public AdminFilter() {
+		usersDao = new UsersDao();
+	}
 
 	public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain)
 			throws IOException, ServletException {
 		HttpServletRequest request = (HttpServletRequest) req;
 		HttpServletResponse response = (HttpServletResponse) resp;
+
+		if (request.getRequestURI().startsWith("/" + Constants.ASSETS_FOLDER)) {
+			chain.doFilter(req, resp);
+			return;
+		}
+
 		HttpSession session = request.getSession();
 		Object loginValue = session.getAttribute(Constants.CREDENTIALS);
 
@@ -31,7 +43,10 @@ public class AdminFilter implements Filter {
 			return;
 		}
 
+		// find database
 		User user = (User) loginValue;
+		Integer userId = user.getId();
+		// find user from db
 		if (!user.getStatus()) {
 			response.sendRedirect("/login");
 			return;
