@@ -1,8 +1,6 @@
 package udema.controllers.web;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,11 +14,6 @@ import udema.dao.models.OtpCode;
 import udema.dao.models.User;
 import udema.dao.repos.OtpCodeDao;
 import udema.dao.repos.UsersDao;
-import udema.helpers.OtpCodeHelpers;
-import udema.helpers.ResourcesHelper;
-import udema.service.MailerService;
-import udema.service.PasswordEncoder;
-import udema.service.params.MailParams;
 
 @WebServlet(urlPatterns = "/register-otp")
 public class PublicAuthRegiseterConfirmController extends HttpServlet {
@@ -58,18 +51,17 @@ public class PublicAuthRegiseterConfirmController extends HttpServlet {
 
 		User userLogin = usersDao.findByEmail(code.getEmail());
 
-		/** Login successfully */
 		HttpSession session = request.getSession();
 		session.setAttribute(Constants.CREDENTIALS, userLogin);
 		Integer roleId = userLogin.getRoleId();
 
 		if (roleId == Constants.ROLE_STUDENT) {
-			response.sendRedirect("/home");
+			response.sendRedirect("/login");
 			return;
 		}
 
 		if (roleId == Constants.ROLE_ADMIN || roleId == Constants.ROLE_TEACHER) {
-			response.sendRedirect("/admin/dashboard");
+			response.sendRedirect("/login");
 			return;
 		}
 	}
