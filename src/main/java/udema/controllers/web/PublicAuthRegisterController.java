@@ -1,6 +1,8 @@
 package udema.controllers.web;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,7 +12,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import udema.dao.models.User;
 import udema.dao.repos.UsersDao;
+import udema.helpers.OtpCodeHelpers;
+import udema.helpers.ResourcesHelper;
+import udema.service.MailerService;
 import udema.service.PasswordEncoder;
+import udema.service.params.MailParams;
 import udema.constants.Constants;
 
 @WebServlet(urlPatterns = "/register")
@@ -18,11 +24,15 @@ public class PublicAuthRegisterController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private UsersDao usersDao;
 	private PasswordEncoder passwordEncoder;
+	private MailerService mailerService;
+	private OtpCodeHelpers codeHelpers;
 
 	public PublicAuthRegisterController() {
 		super();
 		usersDao = new UsersDao();
 		passwordEncoder = new PasswordEncoder();
+		mailerService = new MailerService();
+		codeHelpers = new OtpCodeHelpers();
 	}
 
 	@Override
@@ -42,12 +52,13 @@ public class PublicAuthRegisterController extends HttpServlet {
 		User user = usersDao.findByEmail(email);
 
 		if (user != null) {
-			response.sendRedirect("/register?msg=registerErr");
+			response.sendRedirect("/register?msg=registerErrExist");
 			return;
 		}
 
 		if (!password.equals(confirmPassword)) {
-			response.sendRedirect("/register?msg=registerErr");
+			response.sendRedirect("/register?msg=registerErrPass");
+			return;
 		}
 
 		password = passwordEncoder.encode(password);
@@ -55,12 +66,37 @@ public class PublicAuthRegisterController extends HttpServlet {
 
 		int isCreated = usersDao.createOne(user);
 
-		if (isCreated > 0) {
-			response.sendRedirect("/login");
+		if (isCreated < 1) {
+			response.sendRedirect("/register?msg=registerErr");
 			return;
 		}
 
-		response.sendRedirect("/register?msg=registerErr");
+
+		// send mail
+		Map<String, String> map = new HashMap<>();
+		String otpCode = codeHelpers.generateCode();
+		map.put("username", fullname);
+		map.put("otpCode", otpCode);
+
+		String template = ResourcesHelper.getResourceAsString("templates/register-otp.html");
+
+		MailParams mailParams = MailParams.builder()
+				.from("hoangtuanle2021@gmail.com")
+				.to(email)
+				.subject("[Udema] Verify OTP code")
+				.template(template)
+				.params(map)
+				.build();
+
+		try {
+			mailerService.sendEmail(mailParams);	
+		} catch (Exception e) {
+			e.printStackTrace();
+			response.sendRedirect("/register?msg=registerErr");
+			return;
+		}
+
+		response.sendRedirect("/register-otp?msg=Success");
 		return;
 	}
 }
