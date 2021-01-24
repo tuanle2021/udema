@@ -46,10 +46,10 @@
 	    <div class="item">
 	      <div class="box_grid">
 	        <figure>
-	          <a href="/course/${item.slug}-${item.id}" class="wish_bt"></a>
-	          <a href="course-detail.html">
+	          <a href="${pageContext.request.contextPath}//course-detail?id=${item.id}" class="wish_bt"></a>
+	          <a href="${pageContext.request.contextPath}/course-detail?id=${item.id}">
 	            <div class="preview"><span>Preview course</span></div><img
-	              src="http://via.placeholder.com/800x533/ccc/fff/course__list_1.jpg" class="img-fluid" alt="">
+	              src="${item.images}" class="img-fluid" alt="">
 	          </a>
 	          <div class="price">$${item.price}</div>
 	
@@ -57,7 +57,7 @@
 	        <div class="wrapper">
 	          <small>Category</small>
 	          <h3>${item.name}</h3>
-	          <p>Id placerat tacimates definitionem sea, prima quidam vim no. Duo nobis persecuti cu.</p>
+	          <p>${item.description}</p>
 	          <div class="rating"><i class="icon_star voted"></i><i class="icon_star voted"></i><i
 	              class="icon_star voted"></i><i class="icon_star"></i><i class="icon_star"></i> <small>(145)</small>
 	          </div>
@@ -85,86 +85,23 @@
   <div class="main_title_2">
     <span><em></em></span>
     <h2>Udema Categories Courses</h2>
-    <p>Cum doctus civibus efficiantur in imperdiet deterruisset.</p>
+    <p>Top Course by View</p>
   </div>
   <div class="row">
+    <c:forEach items="${topcoursesbyview}" var="item">
     <div class="col-lg-4 col-md-6 wow" data-wow-offset="150">
       <a href="#0" class="grid_item">
         <figure class="block-reveal">
           <div class="block-horizzontal"></div>
-          <img src="http://via.placeholder.com/800x533/ccc/fff/course_1.jpg" class="img-fluid" alt="">
+          <img src="${item.images}" class="img-fluid" alt="">
           <div class="info">
-            <small><i class="ti-layers"></i>15 Programmes</small>
-            <h3>Arts and Humanities</h3>
+            <small><i class="ti-layers"></i>${item.viewCount}</small>
+            <h3>${item.name}</h3>
           </div>
         </figure>
       </a>
     </div>
-    <!-- /grid_item -->
-    <div class="col-lg-4 col-md-6 wow" data-wow-offset="150">
-      <a href="#0" class="grid_item">
-        <figure class="block-reveal">
-          <div class="block-horizzontal"></div>
-          <img src="http://via.placeholder.com/800x533/ccc/fff/course_2.jpg" class="img-fluid" alt="">
-          <div class="info">
-            <small><i class="ti-layers"></i>23 Programmes</small>
-            <h3>Engineering</h3>
-          </div>
-        </figure>
-      </a>
-    </div>
-    <!-- /grid_item -->
-    <div class="col-lg-4 col-md-6 wow" data-wow-offset="150">
-      <a href="#0" class="grid_item">
-        <figure class="block-reveal">
-          <div class="block-horizzontal"></div>
-          <img src="http://via.placeholder.com/800x533/ccc/fff/course_3.jpg" class="img-fluid" alt="">
-          <div class="info">
-            <small><i class="ti-layers"></i>23 Programmes</small>
-            <h3>Architecture</h3>
-          </div>
-        </figure>
-      </a>
-    </div>
-    <!-- /grid_item -->
-    <div class="col-lg-4 col-md-6 wow" data-wow-offset="150">
-      <a href="#0" class="grid_item">
-        <figure class="block-reveal">
-          <div class="block-horizzontal"></div>
-          <img src="http://via.placeholder.com/800x533/ccc/fff/course_4.jpg" class="img-fluid" alt="">
-          <div class="info">
-            <small><i class="ti-layers"></i>23 Programmes</small>
-            <h3>Science and Biology</h3>
-          </div>
-        </figure>
-      </a>
-    </div>
-    <!-- /grid_item -->
-    <div class="col-lg-4 col-md-6 wow" data-wow-offset="150">
-      <a href="#0" class="grid_item">
-        <figure class="block-reveal">
-          <div class="block-horizzontal"></div>
-          <img src="http://via.placeholder.com/800x533/ccc/fff/course_5.jpg" class="img-fluid" alt="">
-          <div class="info">
-            <small><i class="ti-layers"></i>23 Programmes</small>
-            <h3>Law and Criminology</h3>
-          </div>
-        </figure>
-      </a>
-    </div>
-    <!-- /grid_item -->
-    <div class="col-lg-4 col-md-6 wow" data-wow-offset="150">
-      <a href="#0" class="grid_item">
-        <figure class="block-reveal">
-          <div class="block-horizzontal"></div>
-          <img src="http://via.placeholder.com/800x533/ccc/fff/course_6.jpg" class="img-fluid" alt="">
-          <div class="info">
-            <small><i class="ti-layers"></i>23 Programmes</small>
-            <h3>Medical</h3>
-          </div>
-        </figure>
-      </a>
-    </div>
+      </c:forEach>
     <!-- /grid_item -->
   </div>
   <!-- /row -->

@@ -28,7 +28,7 @@
 	<div id="login">
 		<aside>
 			<figure>
-				<a href="index.html"><img src="/assets/public/img/logo.png" width="149" height="42" data-retina="true" alt=""></a>
+				<a href="${pageContext.request.contextPath}/home"><img src="/assets/public/img/logo.png" width="149" height="42" data-retina="true" alt=""></a>
 			</figure>
 			
 			<c:if test="${param['msg'] == 'registerErrExist' }">

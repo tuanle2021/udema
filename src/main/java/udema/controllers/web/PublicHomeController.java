@@ -25,7 +25,9 @@ public class PublicHomeController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		List<Course> courses = coursesDao.findAll();
+		List<Course> topcoursesbyview = coursesDao.findTopcoursebyview();
 		request.setAttribute("courses", courses);
+		request.setAttribute("topcoursesbyview", topcoursesbyview);
 		request.getRequestDispatcher("/WEB-INF/views/public/home/index.jsp").forward(request, response);
 	}
 

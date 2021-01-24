@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<form>
 <div class="box_general padding_bottom">
   <div class="header_box version_2">
     <h2><i class="fa fa-file"></i>Basic info</h2>
@@ -132,6 +133,7 @@
 </div>
 <!-- /box_general-->
 <p><a href="#0" class="btn_1 medium">Save</a></p>
+
 <content tag="script">
 <script>
   CKEDITOR.replace('ckeditor');

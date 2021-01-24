@@ -25,7 +25,7 @@
 	<div id="login">
 		<aside>
 			<figure>
-				<a href="index.html"><img src="/assets/public/img/logo.png" width="149" height="42" data-retina="true" alt=""></a>
+				<a href="${pageContext.request.contextPath}/home"><img src="/assets/public/img/logo.png" width="149" height="42" data-retina="true" alt=""></a>
 			</figure>
 			<form action="/login" method="POST" data-parsley-validate>
 				<div class="access_social">
@@ -36,7 +36,7 @@
 				<div class="divider"><span>Or</span></div>
 				<div class="form-group">
 					<span class="input">
-					<input class="input_field" type="email" autocomplete="off" name="email" value="hoanghuy@gmail.com"
+					<input class="input_field" type="email" autocomplete="off" name="email" value=""
 						data-parsley-type="email" data-parsley-type-message="Please type a correct email format"
 						data-parsley-required data-parsley-required-message="Please type your email" >
 						<label class="input_label">
@@ -44,7 +44,7 @@
 					</label>
 					</span>
 					<span class="input">
-					<input class="input_field" type="password" autocomplete="off" name="password" value="123456"
+					<input class="input_field" type="password" autocomplete="off" name="password" value=""
 						data-parsley-required data-parsley-required-message="Please type your password">
 						<label class="input_label">
 						<span class="input__label-content">Your password</span>
