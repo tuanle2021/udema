@@ -24,26 +24,11 @@
 
         <section id="description">
           <h2>Description</h2>
-          <p>Per consequat adolescens ex, cu nibh commune temporibus vim, ad sumo viris eloquentiam sed. Mea appareat
-            omittantur eloquentiam ad, nam ei quas oportere democritum. Prima causae admodum id est, ei timeam
-            inimicus sed. Sit an meis aliquam, cetero inermis vel ut. An sit illum euismod facilisis, tamquam
-            vulputate pertinacia eum at.</p>
+          <p>${course.description}</p>
           <h5>What will you learn</h5>
           <ul class="list_ok">
             <li>
-              <h6>Suas summo id sed erat erant oporteat</h6>
-              <p>Ut unum diceret eos, mel cu velit principes, ut quo inani dolorem mediocritatem. Mea in justo
-                posidonium necessitatibus.</p>
-            </li>
-            <li>
-              <h6>Illud singulis indoctum ad sed</h6>
-              <p>Ut unum diceret eos, mel cu velit principes, ut quo inani dolorem mediocritatem. Mea in justo
-                posidonium necessitatibus.</p>
-            </li>
-            <li>
-              <h6>Alterum bonorum mentitum an mel</h6>
-              <p>Ut unum diceret eos, mel cu velit principes, ut quo inani dolorem mediocritatem. Mea in justo
-                posidonium necessitatibus.</p>
+              <p>${course.detail}</p>
             </li>
           </ul>
           <hr>
@@ -343,11 +328,11 @@
         <div class="box_detail">
           <figure>
             <a href="https://www.youtube.com/watch?v=LDgd_gUcqCw" class="video"><i
-                class="arrow_triangle-right"></i><img src="http://via.placeholder.com/800x533/ccc/fff/course_1.jpg"
+                class="arrow_triangle-right"></i><img src="${course.images}"
                 alt="" class="img-fluid"><span>View course preview</span></a>
           </figure>
           <div class="price">
-            $29<span class="original_price"><em>$49</em>60% discount price</span>
+            ${course.price}<span class="original_price">${course.discount}% discount price</span>
           </div>
           <a href="#0" class="btn_1 full-width">Purchase</a>
           <a href="#0" class="btn_1 full-width outline"><i class="icon_heart"></i> Add to wishlist</a>

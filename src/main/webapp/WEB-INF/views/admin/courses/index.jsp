@@ -35,7 +35,7 @@
 				            <td>${item.id}</td>
 							<td>${item.name}</td>
 				            <td>
-				            	<img alt="No images found" src="${item.images}">
+				            	<img width="100px" height="100px" alt="No images found" src="${item.images}">
 				            </td>
 				            <td>$ ${item.price}</td>
 				            

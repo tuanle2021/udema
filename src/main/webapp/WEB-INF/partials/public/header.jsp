@@ -26,8 +26,8 @@
       </li>
       <li><span><a href="#0">Courses</a></span>
         <ul>
-          <li><a href="${pageContext.request.contextPath}/filter">Web DEV</a></li>
-          <li><a href="${pageContext.request.contextPath}/filter">Mobile DEV</a></li>
+          <li><a href="${pageContext.request.contextPath}/filter?id=2">Web DEV</a></li>
+          <li><a href="${pageContext.request.contextPath}/filter?id=3">Mobile DEV</a></li>
         </ul>
       </li>
       <c:if test="${credentials != null}">
