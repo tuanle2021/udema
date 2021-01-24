@@ -8,8 +8,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import udema.constants.Constants;
 import udema.dao.models.Course;
+import udema.dao.models.User;
 import udema.dao.repos.CoursesDao;
 
 @WebServlet(urlPatterns = "/admin/courses")
@@ -24,24 +27,12 @@ public class AdminCoursesIndexController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		List<Course> list = courseDAO.findAll();
-		System.out.println("size: " + list.size());
-
-		Course course = courseDAO.findOneById(1);
-		System.out.println("course: " + course.toString());
-
-		int isDeleted = courseDAO.deleteOneByid(100);
-		System.out.println("isDeleted: " + isDeleted);
-
-		course.setStatus("uncomplete");
-		int isUpdated = courseDAO.updateOneByid(course);
-		System.out.println("isUpdated: " + isUpdated);
-
-		course.setName("Flutter & Dart - The Complete Guide [2021 Edition]");
-		int isCreated = courseDAO.createOne(course);
-		System.out.println("createone: " + isCreated);
-
-		request.getRequestDispatcher("/WEB-INF/views/admin/messages/index.jsp").forward(request, response);
+		HttpSession session = request.getSession();
+		User userLogin = (User)session.getAttribute(Constants.CREDENTIALS);
+		
+		List<Course> listCourse = courseDAO.findAllByTeacherId(userLogin.getId());
+		request.setAttribute("courses", listCourse);
+		request.getRequestDispatcher("/WEB-INF/views/admin/courses/index.jsp").forward(request, response);
 	}
 
 	@Override

@@ -49,6 +49,7 @@ public class CoursesDao {
 
 		return listCourses;
 	}
+	
 	public List<Course> findTopcoursebyview() {
 		List<Course> listCourses = new ArrayList<>();
 		conn = JdbcHelpers.getConnection();
@@ -162,5 +163,25 @@ public class CoursesDao {
 		}
 
 		return isCreated;
+	}
+	
+	public List<Course> findAllByTeacherId(Integer teacherId) {
+		List<Course> listCourses = new ArrayList<>();
+		conn = JdbcHelpers.getConnection();
+		String sql = "SELECT * FROM courses as c INNER JOIN categories as cat ON c.categoryId = cat.id INNER JOIN users as u ON u.id = c.teacherId WHERE c.teacherId = ? ORDER BY c.id";
+		try {
+			pst = conn.prepareStatement(sql);
+			pst.setInt(1, teacherId);
+			rs = pst.executeQuery();
+			while (rs.next()) {
+				listCourses.add(mapRow(rs));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JdbcHelpers.close(rs, st, conn);
+		}
+
+		return listCourses;
 	}
 }

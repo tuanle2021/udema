@@ -1,76 +1,64 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ include file="/WEB-INF/common/taglib.jsp" %>
 <div class="box_general">
 	<div class="header_box">
-		<h2 class="d-inline-block">Your Courses</h2>
-		<div class="filter">
+		<h2 class="d-inline-block">Your Courses <a href="courses/add"><i class="fa fa-plus"></i></a></h2>
+		<!-- <div class="filter">
 			<select name="orderby" class="selectbox">
 				<option value="Any status">Any status</option>
 				<option value="Approved">Started</option>
 				<option value="Pending">Pending</option>
 				<option value="Cancelled">Cancelled</option>
 			</select>
-		</div>
+		</div> -->
 	</div>
 	<div class="list_general">
-		<ul>
-			<li>
-				<figure><img src="/assets/admin/img/course_1.jpg" alt=""></figure>
-				<h4>Course title <i class="pending">Pending</i></h4>
-				<ul class="course_list">
-					<li><strong>Start date</strong> 11 November 2017</li>
-					<li><strong>Expire date</strong> 11 April 2018</li>
-					<li><strong>Category</strong> Science, Economy</li>
-					<li><strong>Teacher</strong> Mark Twain</li>
-				</ul>
-				<h6>Course description</h6>
-				<p>Lorem ipsum dolor sit amet, est ei idque voluptua copiosae, pro detracto disputando reformidans at, ex vel
-					suas eripuit. Vel alii zril maiorum ex, mea id sale eirmod epicurei. Sit te possit senserit, eam alia
-					veritus maluisset ei, id cibo vocent ocurreret per. Te qui doming doctus referrentur, usu debet tamquam et.
-					Sea ut nullam aperiam, mei cu tollit salutatus delicatissimi. His appareat perfecto intellegat te. </p>
-				<ul class="buttons">
-					<li><a href="#0" class="btn_1 gray approve"><i class="fa fa-fw fa-check-circle-o"></i> Approve</a></li>
-					<li><a href="#0" class="btn_1 gray delete"><i class="fa fa-fw fa-times-circle-o"></i> Cancel</a></li>
-				</ul>
-			</li>
-			<li>
-				<figure><img src="/assets/admin/img/course_2.jpg" alt=""></figure>
-				<h4>Course title <i class="cancel">Cancelled</i></h4>
-				<ul class="course_list">
-					<li><strong>Start date</strong> 11 November 2017</li>
-					<li><strong>Expire date</strong> 11 April 2018</li>
-					<li><strong>Category</strong> Science, Economy</li>
-					<li><strong>Teacher</strong> Mark Twain</li>
-				</ul>
-				<h6>Course description</h6>
-				<p>Lorem ipsum dolor sit amet, est ei idque voluptua copiosae, pro detracto disputando reformidans at, ex vel
-					suas eripuit. Vel alii zril maiorum ex, mea id sale eirmod epicurei. Sit te possit senserit, eam alia
-					veritus maluisset ei, id cibo vocent ocurreret per. Te qui doming doctus referrentur, usu debet tamquam et.
-					Sea ut nullam aperiam, mei cu tollit salutatus delicatissimi. His appareat perfecto intellegat te. </p>
-				<ul class="buttons">
-					<li><a href="#0" class="btn_1 gray approve"><i class="fa fa-fw fa-check-circle-o"></i> Approve</a></li>
-					<li><a href="#0" class="btn_1 gray delete"><i class="fa fa-fw fa-times-circle-o"></i> Cancel</a></li>
-				</ul>
-			</li>
-			<li>
-				<figure><img src="/assets/admin/img/course_3.jpg" alt=""></figure>
-				<h4>Course title <i class="approved">Started</i></h4>
-				<ul class="course_list">
-					<li><strong>Start date</strong> 11 November 2017</li>
-					<li><strong>Expire date</strong> 11 April 2018</li>
-					<li><strong>Category</strong> Science, Economy</li>
-					<li><strong>Teacher</strong> Mark Twain</li>
-				</ul>
-				<h6>Course description</h6>
-				<p>Lorem ipsum dolor sit amet, est ei idque voluptua copiosae, pro detracto disputando reformidans at, ex vel
-					suas eripuit. Vel alii zril maiorum ex, mea id sale eirmod epicurei. Sit te possit senserit, eam alia
-					veritus maluisset ei, id cibo vocent ocurreret per. Te qui doming doctus referrentur, usu debet tamquam et.
-					Sea ut nullam aperiam, mei cu tollit salutatus delicatissimi. His appareat perfecto intellegat te. </p>
-				<ul class="buttons">
-					<li><a href="#0" class="btn_1 gray approve"><i class="fa fa-fw fa-check-circle-o"></i> Approve</a></li>
-					<li><a href="#0" class="btn_1 gray delete"><i class="fa fa-fw fa-times-circle-o"></i> Cancel</a></li>
-				</ul>
-			</li>
-		</ul>
+		<div class="card-body">
+		    <div class="table-responsive">
+		      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+		        <thead>
+		          <tr>
+		            <th>Id</th>
+		            <th>Name</th>
+		            <th>Image</th>
+		            <th>Price</th>
+		            <th>Views</th>
+		            <th>CreatedAt</th>
+		            <th>Status</th>
+		            <th>Action</th>
+		          </tr>
+		        </thead>
+		        <tbody>
+		        <c:if test="${not empty courses}">
+		        	<c:forEach items="${courses}" var="item">
+		        		<tr>
+				            <td>${item.id}</td>
+							<td>${item.name}</td>
+				            <td>
+				            	<img alt="No images found" src="${item.images}">
+				            </td>
+				            <td>$ ${item.price}</td>
+				            
+				            <td>${item.viewCount}</td>
+				            <td>
+				            	<fmt:formatDate type="date" value="${item.createdAt}" />  
+				           </td>
+				            <td>${item.status}</td>
+				            <td>
+				            	<a href="courses/edit?id=${item.id}">Edit</a>
+				            </td>
+				          </tr>
+		        	</c:forEach>
+		        </c:if>
+		        <c:if test="${empty courses}">
+		        	<tr>
+		        		<td colspan="8">No courses found</td>
+		        	</tr>
+		        </c:if>
+		        </tbody>
+		      </table>
+		    </div>
+  		</div>
 	</div>
 </div>
 <!-- /box_general-->

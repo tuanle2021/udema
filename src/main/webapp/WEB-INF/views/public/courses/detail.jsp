@@ -12,7 +12,7 @@
   <nav class="secondary_nav sticky_horizontal">
     <div class="container">
       <ul class="clearfix">
-        <li><a href="#description" class="active">${course.name.description}</a></li>
+        <li><a href="#description" class="active">${course.name}</a></li>
         <li><a href="#lessons">Lessons</a></li>
         <li><a href="#reviews">Reviews</a></li>
       </ul>
