@@ -97,7 +97,7 @@
 				<button type="submit" class="btn_1 rounded full-width add_top_30">Register to Udema</button>
 				<div class="text-center add_top_10">Already have an acccount? <strong><a href="login">Sign In</a></strong></div>
 			</form>
-			<div class="copy">© 2017 Udema</div>
+			<div class="copy">© 2021 Udema</div>
 		</aside>
 	</div>
 	<!-- /login -->

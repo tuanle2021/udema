@@ -3,8 +3,6 @@
     <div class="row">
       <div class="col-lg-5 col-md-12 p-r-5">
         <p><img src="/assets/public/img/logo.png" width="149" height="42" data-retina="true" alt=""></p>
-        <p>Mea nibh meis philosophia eu. Duis legimus efficiantur ea sea. Id placerat tacimates definitionem sea, prima
-          quidam vim no. Duo nobis persecuti cu. Nihil facilisi indoctum an vix, ut delectus expetendis vis.</p>
         <div class="follow_us">
           <ul>
             <li>Follow us</li>
@@ -21,8 +19,8 @@
         <ul class="links">
           <li><a href="#0">Admission</a></li>
           <li><a href="#0">About</a></li>
-          <li><a href="#0">Login</a></li>
-          <li><a href="#0">Register</a></li>
+          <li><a href="${pageContext.request.contextPath}/login">Login</a></li>
+          <li><a href="${pageContext.request.contextPath}/register">Register</a></li>
           <li><a href="#0">News &amp; Events</a></li>
           <li><a href="#0">Contacts</a></li>
         </ul>
@@ -30,8 +28,8 @@
       <div class="col-lg-3 col-md-6">
         <h5>Contact with Us</h5>
         <ul class="contacts">
-          <li><a href="tel://61280932400"><i class="ti-mobile"></i> + 61 23 8093 3400</a></li>
-          <li><a href="mailto:info@udema.com"><i class="ti-email"></i> info@udema.com</a></li>
+          <li><a href="tel://61280932400"><i class="ti-mobile"></i> +84 334596925</a></li>
+          <li><a href="mailto:info@udema.com"><i class="ti-email"></i> hoangtuanle2021@gmail.com</a></li>
         </ul>
         <div id="newsletter">
           <h6>Newsletter</h6>
@@ -56,7 +54,7 @@
         </ul>
       </div>
       <div class="col-md-4">
-        <div id="copy">© 2017 Udema</div>
+        <div id="copy">&copy Copyright 2021 Udema</div>
       </div>
     </div>
   </div>

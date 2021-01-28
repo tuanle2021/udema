@@ -38,15 +38,15 @@
           </a>
         </span>
         <ul>
-          <li><a href="/myprofile">${credentials.email}</a></li>
-          <li><a href="/logout">Logout</a></li>
+          <li><a href="${pageContext.request.contextPath}/myprofile">${credentials.email}</a></li>
+          <li><a href="${pageContext.request.contextPath}/logout">Logout</a></li>
         </ul>
       </li>
       </c:if>
       <c:if test="${credentials == null}">
       <li>
       	 <span>
-          <a href="/login">Login</a>
+          <a href="${pageContext.request.contextPath}/login">Login</a>
         </span>
       </li>
       </c:if>

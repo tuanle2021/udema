@@ -65,7 +65,7 @@
 	        <ul>
 	          <li><i class="icon_clock_alt"></i> 1h 30min</li>
 	          <li><i class="icon_like"></i> 890</li>
-	          <li><a href="course-detail.html">Enroll now</a></li>
+	          <li><a href="${pageContext.request.contextPath}/cart-payment">Enroll now</a></li>
 	        </ul>
 	      </div>
 	    </div>

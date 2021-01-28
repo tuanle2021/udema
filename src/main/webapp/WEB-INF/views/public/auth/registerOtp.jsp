@@ -49,7 +49,7 @@
 				<button type="submit" class="btn_1 rounded full-width ">Confirm</button>
 				<div class="text-center add_top_10">New to Udema? <strong><a href="/register">Register!</a></strong></div>
 			</form>
-			<div class="copy">© 2017 Udema</div>
+			<div class="copy">© 2021 Udema</div>
 		</aside>
 	</div>
 	<!-- /login -->
