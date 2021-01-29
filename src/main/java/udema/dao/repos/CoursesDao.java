@@ -52,10 +52,11 @@ public class CoursesDao {
 	public List<Course> findAllbyId(int id) {
 		List<Course> listCourses = new ArrayList<>();
 		conn = JdbcHelpers.getConnection();
-		String sql = "SELECT * FROM courses as c INNER JOIN categories as cat ON c.categoryId = cat.id INNER JOIN users as u ON u.id = c.teacherId WHERE c.categoryId= id";
+		String sql = "SELECT * FROM courses as c INNER JOIN categories as cat ON c.categoryId = cat.id INNER JOIN users as u ON u.id = c.teacherId WHERE c.categoryId = ?";
 		try {
-			st = conn.createStatement();
-			rs = st.executeQuery(sql);
+			pst = conn.prepareStatement(sql);
+			pst.setInt(1, id);
+			rs = pst.executeQuery();
 			while (rs.next()) {
 				listCourses.add(mapRow(rs));
 			}
